@@ -37,7 +37,11 @@ public class RecyclerActivity extends Activity {
 
     private void initializeData(){
         dataset = new ArrayList<>();
-        dataset.add(new Data("gwez", "let there be gwez", R.drawable.gwezzz));
+        dataset.add(new Data("state", "start accepting state", R.drawable.accept_state));
+        dataset.add(new Data("state", "start accepting state", R.drawable.accept_state));
+        dataset.add(new Data("state", "start accepting state", R.drawable.accept_state));
+        dataset.add(new Data("state", "start accepting state", R.drawable.accept_state));
+        dataset.add(new Data("state", "start accepting state", R.drawable.accept_state));
         dataset.add(new Data("state", "start accepting state", R.drawable.accept_state));
     }
 
