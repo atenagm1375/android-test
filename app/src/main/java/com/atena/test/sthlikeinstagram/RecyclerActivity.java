@@ -1,38 +1,48 @@
 package com.atena.test.sthlikeinstagram;
 
 import android.app.Activity;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerActivity extends Activity {
 
-
     private List<Data> dataset;
-
-    private void initializeData() {
-        dataset = new ArrayList<>();
-        dataset.add(new Data("gwez", "Let there be gwez!", R.drawable.gwezzz));
-        dataset.add(new Data("state", "This is the start accepting state of an automaton", R.drawable.accept_state));
-    }
+    private RecyclerView rv;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
-        recyclerView.setHasFixedSize(true);
+        setContentView(R.layout.my_recycler);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        rv=(RecyclerView)findViewById(R.id.recycler);
 
-        RVAdapter rvAdapter = new RVAdapter(dataset);
-        recyclerView.setAdapter(rvAdapter);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+        rv.setHasFixedSize(true);
+
+        initializeData();
+        initializeAdapter();
+    }
+
+    private void initializeData(){
+        dataset = new ArrayList<>();
+        dataset.add(new Data("gwez", "let there be gwez", R.drawable.gwezzz));
+        dataset.add(new Data("state", "start accepting state", R.drawable.accept_state));
+    }
+
+    private void initializeAdapter(){
+        RVAdapter adapter = new RVAdapter(dataset);
+        rv.setAdapter(adapter);
     }
 }
